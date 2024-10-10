@@ -137,3 +137,23 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
   });
 }
+
+window.onload = function () {
+  const scrollableElements = document.querySelectorAll(".scrollableElement");
+  function autoScroll(element) {
+    element.scrollBy({
+      left: 1, // Horizontal scrolling
+      behavior: "smooth",
+    });
+
+    // Check if the scroll has reached the end
+    if (element.scrollLeft + element.clientWidth >= element.scrollWidth) {
+      element.scrollLeft = 0; // Reset scroll position to the beginning
+    }
+  }
+  scrollableElements.forEach((element) => {
+    setInterval(() => {
+      autoScroll(element);
+    }, 2000); // Calls autoScroll every 2 seconds
+  });
+};
